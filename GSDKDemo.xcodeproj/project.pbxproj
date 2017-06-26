@@ -1,0 +1,535 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		939AB2821AEFAC7D0047BFAE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 939AB2811AEFAC7D0047BFAE /* main.m */; };
+		939AB2851AEFAC7D0047BFAE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 939AB2841AEFAC7D0047BFAE /* AppDelegate.m */; };
+		939AB2881AEFAC7D0047BFAE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 939AB2871AEFAC7D0047BFAE /* ViewController.m */; };
+		939AB28B1AEFAC7D0047BFAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 939AB2891AEFAC7D0047BFAE /* Main.storyboard */; };
+		939AB28D1AEFAC7D0047BFAE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 939AB28C1AEFAC7D0047BFAE /* Images.xcassets */; };
+		939AB2901AEFAC7D0047BFAE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939AB28E1AEFAC7D0047BFAE /* LaunchScreen.xib */; };
+		939AB29C1AEFAC7D0047BFAE /* GSDKDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 939AB29B1AEFAC7D0047BFAE /* GSDKDemoTests.m */; };
+		939AB2AF1AEFAE590047BFAE /* libGSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 939AB2AE1AEFAE590047BFAE /* libGSDK.a */; };
+		A21809771B569B6C001D713E /* escpic.rtf in Resources */ = {isa = PBXBuildFile; fileRef = A21809741B569B6C001D713E /* escpic.rtf */; };
+		A21809781B569B6C001D713E /* logo2.png in Resources */ = {isa = PBXBuildFile; fileRef = A21809751B569B6C001D713E /* logo2.png */; };
+		A21809791B569B6C001D713E /* tscpic.rtf in Resources */ = {isa = PBXBuildFile; fileRef = A21809761B569B6C001D713E /* tscpic.rtf */; };
+		A2D785AC1B5E968E00ABD9E6 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2D785AA1B5E968E00ABD9E6 /* logo@2x.png */; };
+		A2D785AD1B5E968E00ABD9E6 /* logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2D785AB1B5E968E00ABD9E6 /* logo@3x.png */; };
+		A2DB57671AF66A960078F787 /* ConnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2DB57531AF66A960078F787 /* ConnectViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A2DB57681AF66A960078F787 /* ConnectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2DB57541AF66A960078F787 /* ConnectViewController.xib */; };
+		A2DB576D1AF66A960078F787 /* ISSCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A2DB575D1AF66A960078F787 /* ISSCButton.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A2DB57701AF66A960078F787 /* UUIDSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2DB57641AF66A960078F787 /* UUIDSettingViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A2DB57711AF66A960078F787 /* UUIDSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2DB57651AF66A960078F787 /* UUIDSettingViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		939AB2961AEFAC7D0047BFAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 939AB2741AEFAC7D0047BFAE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 939AB27B1AEFAC7D0047BFAE;
+			remoteInfo = GSDKDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		937FCFF81C187DBF0050860B /* BLKWrite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLKWrite.h; sourceTree = "<group>"; };
+		937FCFF91C187DBF0050860B /* CBController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBController.h; sourceTree = "<group>"; };
+		937FCFFA1C187DBF0050860B /* DeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceInfo.h; sourceTree = "<group>"; };
+		937FCFFB1C187DBF0050860B /* EscCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EscCommand.h; sourceTree = "<group>"; };
+		937FCFFC1C187DBF0050860B /* TscCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TscCommand.h; sourceTree = "<group>"; };
+		937FCFFD1C187E7F0050860B /* MyPeripheral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPeripheral.h; sourceTree = "<group>"; };
+		937FCFFE1C187FBE0050860B /* ReliableBurstData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReliableBurstData.h; sourceTree = "<group>"; };
+		939AB27C1AEFAC7D0047BFAE /* GSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		939AB2801AEFAC7D0047BFAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		939AB2811AEFAC7D0047BFAE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		939AB2831AEFAC7D0047BFAE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		939AB2841AEFAC7D0047BFAE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		939AB2861AEFAC7D0047BFAE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		939AB2871AEFAC7D0047BFAE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		939AB28A1AEFAC7D0047BFAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		939AB28C1AEFAC7D0047BFAE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		939AB28F1AEFAC7D0047BFAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		939AB2951AEFAC7D0047BFAE /* GSDKDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GSDKDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		939AB29A1AEFAC7D0047BFAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		939AB29B1AEFAC7D0047BFAE /* GSDKDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GSDKDemoTests.m; sourceTree = "<group>"; };
+		939AB2AE1AEFAE590047BFAE /* libGSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGSDK.a; sourceTree = "<group>"; };
+		A21809741B569B6C001D713E /* escpic.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = escpic.rtf; sourceTree = "<group>"; };
+		A21809751B569B6C001D713E /* logo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo2.png; sourceTree = "<group>"; };
+		A21809761B569B6C001D713E /* tscpic.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = tscpic.rtf; sourceTree = "<group>"; };
+		A2D785AA1B5E968E00ABD9E6 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = SOURCE_ROOT; };
+		A2D785AB1B5E968E00ABD9E6 /* logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@3x.png"; sourceTree = SOURCE_ROOT; };
+		A2DB57521AF66A960078F787 /* ConnectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectViewController.h; sourceTree = "<group>"; };
+		A2DB57531AF66A960078F787 /* ConnectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectViewController.m; sourceTree = "<group>"; };
+		A2DB57541AF66A960078F787 /* ConnectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectViewController.xib; sourceTree = "<group>"; };
+		A2DB575C1AF66A960078F787 /* ISSCButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSCButton.h; sourceTree = "<group>"; };
+		A2DB575D1AF66A960078F787 /* ISSCButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSCButton.m; sourceTree = "<group>"; };
+		A2DB57631AF66A960078F787 /* UUIDSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUIDSettingViewController.h; sourceTree = "<group>"; };
+		A2DB57641AF66A960078F787 /* UUIDSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUIDSettingViewController.m; sourceTree = "<group>"; };
+		A2DB57651AF66A960078F787 /* UUIDSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UUIDSettingViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		939AB2791AEFAC7D0047BFAE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				939AB2AF1AEFAE590047BFAE /* libGSDK.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		939AB2921AEFAC7D0047BFAE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		939AB2731AEFAC7D0047BFAE = {
+			isa = PBXGroup;
+			children = (
+				939AB2AE1AEFAE590047BFAE /* libGSDK.a */,
+				939AB27E1AEFAC7D0047BFAE /* GSDKDemo */,
+				939AB2981AEFAC7D0047BFAE /* GSDKDemoTests */,
+				939AB27D1AEFAC7D0047BFAE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		939AB27D1AEFAC7D0047BFAE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				939AB27C1AEFAC7D0047BFAE /* GSDKDemo.app */,
+				939AB2951AEFAC7D0047BFAE /* GSDKDemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		939AB27E1AEFAC7D0047BFAE /* GSDKDemo */ = {
+			isa = PBXGroup;
+			children = (
+				A2DB574F1AF66A960078F787 /* Conn */,
+				93A0EC151AEFBBC3005CDCAB /* include */,
+				939AB2831AEFAC7D0047BFAE /* AppDelegate.h */,
+				939AB2841AEFAC7D0047BFAE /* AppDelegate.m */,
+				939AB2861AEFAC7D0047BFAE /* ViewController.h */,
+				939AB2871AEFAC7D0047BFAE /* ViewController.m */,
+				939AB2891AEFAC7D0047BFAE /* Main.storyboard */,
+				939AB28C1AEFAC7D0047BFAE /* Images.xcassets */,
+				939AB28E1AEFAC7D0047BFAE /* LaunchScreen.xib */,
+				939AB27F1AEFAC7D0047BFAE /* Supporting Files */,
+			);
+			path = GSDKDemo;
+			sourceTree = "<group>";
+		};
+		939AB27F1AEFAC7D0047BFAE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A2D785AA1B5E968E00ABD9E6 /* logo@2x.png */,
+				A2D785AB1B5E968E00ABD9E6 /* logo@3x.png */,
+				A21809741B569B6C001D713E /* escpic.rtf */,
+				A21809751B569B6C001D713E /* logo2.png */,
+				A21809761B569B6C001D713E /* tscpic.rtf */,
+				939AB2801AEFAC7D0047BFAE /* Info.plist */,
+				939AB2811AEFAC7D0047BFAE /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		939AB2981AEFAC7D0047BFAE /* GSDKDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				939AB29B1AEFAC7D0047BFAE /* GSDKDemoTests.m */,
+				939AB2991AEFAC7D0047BFAE /* Supporting Files */,
+			);
+			path = GSDKDemoTests;
+			sourceTree = "<group>";
+		};
+		939AB2991AEFAC7D0047BFAE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				939AB29A1AEFAC7D0047BFAE /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		93A0EC151AEFBBC3005CDCAB /* include */ = {
+			isa = PBXGroup;
+			children = (
+				937FCFFD1C187E7F0050860B /* MyPeripheral.h */,
+				937FCFFE1C187FBE0050860B /* ReliableBurstData.h */,
+				937FCFF81C187DBF0050860B /* BLKWrite.h */,
+				937FCFF91C187DBF0050860B /* CBController.h */,
+				937FCFFA1C187DBF0050860B /* DeviceInfo.h */,
+				937FCFFB1C187DBF0050860B /* EscCommand.h */,
+				937FCFFC1C187DBF0050860B /* TscCommand.h */,
+			);
+			path = include;
+			sourceTree = SOURCE_ROOT;
+		};
+		A2DB574F1AF66A960078F787 /* Conn */ = {
+			isa = PBXGroup;
+			children = (
+				A2DB57521AF66A960078F787 /* ConnectViewController.h */,
+				A2DB57531AF66A960078F787 /* ConnectViewController.m */,
+				A2DB57541AF66A960078F787 /* ConnectViewController.xib */,
+				A2DB575C1AF66A960078F787 /* ISSCButton.h */,
+				A2DB575D1AF66A960078F787 /* ISSCButton.m */,
+				A2DB57631AF66A960078F787 /* UUIDSettingViewController.h */,
+				A2DB57641AF66A960078F787 /* UUIDSettingViewController.m */,
+				A2DB57651AF66A960078F787 /* UUIDSettingViewController.xib */,
+			);
+			name = Conn;
+			path = ISSC;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		939AB27B1AEFAC7D0047BFAE /* GSDKDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 939AB29F1AEFAC7D0047BFAE /* Build configuration list for PBXNativeTarget "GSDKDemo" */;
+			buildPhases = (
+				939AB2781AEFAC7D0047BFAE /* Sources */,
+				939AB2791AEFAC7D0047BFAE /* Frameworks */,
+				939AB27A1AEFAC7D0047BFAE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GSDKDemo;
+			productName = GSDKDemo;
+			productReference = 939AB27C1AEFAC7D0047BFAE /* GSDKDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		939AB2941AEFAC7D0047BFAE /* GSDKDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 939AB2A21AEFAC7D0047BFAE /* Build configuration list for PBXNativeTarget "GSDKDemoTests" */;
+			buildPhases = (
+				939AB2911AEFAC7D0047BFAE /* Sources */,
+				939AB2921AEFAC7D0047BFAE /* Frameworks */,
+				939AB2931AEFAC7D0047BFAE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				939AB2971AEFAC7D0047BFAE /* PBXTargetDependency */,
+			);
+			name = GSDKDemoTests;
+			productName = GSDKDemoTests;
+			productReference = 939AB2951AEFAC7D0047BFAE /* GSDKDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		939AB2741AEFAC7D0047BFAE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = kai.shang;
+				TargetAttributes = {
+					939AB27B1AEFAC7D0047BFAE = {
+						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 7U7AE55838;
+					};
+					939AB2941AEFAC7D0047BFAE = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = 939AB27B1AEFAC7D0047BFAE;
+					};
+				};
+			};
+			buildConfigurationList = 939AB2771AEFAC7D0047BFAE /* Build configuration list for PBXProject "GSDKDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 939AB2731AEFAC7D0047BFAE;
+			productRefGroup = 939AB27D1AEFAC7D0047BFAE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				939AB27B1AEFAC7D0047BFAE /* GSDKDemo */,
+				939AB2941AEFAC7D0047BFAE /* GSDKDemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		939AB27A1AEFAC7D0047BFAE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				939AB28B1AEFAC7D0047BFAE /* Main.storyboard in Resources */,
+				A2DB57711AF66A960078F787 /* UUIDSettingViewController.xib in Resources */,
+				939AB2901AEFAC7D0047BFAE /* LaunchScreen.xib in Resources */,
+				A2D785AD1B5E968E00ABD9E6 /* logo@3x.png in Resources */,
+				A2DB57681AF66A960078F787 /* ConnectViewController.xib in Resources */,
+				A2D785AC1B5E968E00ABD9E6 /* logo@2x.png in Resources */,
+				A21809771B569B6C001D713E /* escpic.rtf in Resources */,
+				939AB28D1AEFAC7D0047BFAE /* Images.xcassets in Resources */,
+				A21809791B569B6C001D713E /* tscpic.rtf in Resources */,
+				A21809781B569B6C001D713E /* logo2.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		939AB2931AEFAC7D0047BFAE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		939AB2781AEFAC7D0047BFAE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A2DB57701AF66A960078F787 /* UUIDSettingViewController.m in Sources */,
+				939AB2881AEFAC7D0047BFAE /* ViewController.m in Sources */,
+				A2DB57671AF66A960078F787 /* ConnectViewController.m in Sources */,
+				939AB2851AEFAC7D0047BFAE /* AppDelegate.m in Sources */,
+				A2DB576D1AF66A960078F787 /* ISSCButton.m in Sources */,
+				939AB2821AEFAC7D0047BFAE /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		939AB2911AEFAC7D0047BFAE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				939AB29C1AEFAC7D0047BFAE /* GSDKDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		939AB2971AEFAC7D0047BFAE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 939AB27B1AEFAC7D0047BFAE /* GSDKDemo */;
+			targetProxy = 939AB2961AEFAC7D0047BFAE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		939AB2891AEFAC7D0047BFAE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				939AB28A1AEFAC7D0047BFAE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		939AB28E1AEFAC7D0047BFAE /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				939AB28F1AEFAC7D0047BFAE /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		939AB29D1AEFAC7D0047BFAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		939AB29E1AEFAC7D0047BFAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		939AB2A01AEFAC7D0047BFAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 7U7AE55838;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = GSDKDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/Aaron/Desktop,
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/GSDKDemo/ISSC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mw.com.MWVIPOrderProject;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		939AB2A11AEFAC7D0047BFAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 7U7AE55838;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = GSDKDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/Aaron/Desktop,
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/GSDKDemo/ISSC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mw.com.MWVIPOrderProject;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		939AB2A31AEFAC7D0047BFAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = GSDKDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GSDKDemo.app/GSDKDemo";
+			};
+			name = Debug;
+		};
+		939AB2A41AEFAC7D0047BFAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = GSDKDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GSDKDemo.app/GSDKDemo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		939AB2771AEFAC7D0047BFAE /* Build configuration list for PBXProject "GSDKDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				939AB29D1AEFAC7D0047BFAE /* Debug */,
+				939AB29E1AEFAC7D0047BFAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		939AB29F1AEFAC7D0047BFAE /* Build configuration list for PBXNativeTarget "GSDKDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				939AB2A01AEFAC7D0047BFAE /* Debug */,
+				939AB2A11AEFAC7D0047BFAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		939AB2A21AEFAC7D0047BFAE /* Build configuration list for PBXNativeTarget "GSDKDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				939AB2A31AEFAC7D0047BFAE /* Debug */,
+				939AB2A41AEFAC7D0047BFAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 939AB2741AEFAC7D0047BFAE /* Project object */;
+}
