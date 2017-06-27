@@ -78,7 +78,6 @@
         
         deviceInfo = [[DeviceInfo alloc]init];
         refreshDeviceListTimer = nil;
-        uuidSettingViewController = nil;
     }
     return self;
 }
@@ -95,28 +94,11 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     
-    //    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    //    [[appDelegate navigationController] setToolbarHidden:NO animated:NO];
-    //
-    if([connectedDeviceInfo count] == 0) {
-        if (uuidSettingViewController.isUUIDAvailable) {
-            [self configureTransparentServiceUUID:uuidSettingViewController.transServiceUUIDStr txUUID:uuidSettingViewController.transTxUUIDStr rxUUID:uuidSettingViewController.transRxUUIDStr];
-        }
-        else
-            [self configureTransparentServiceUUID:nil txUUID:nil rxUUID:nil];
+   
+
+    [self configureDeviceInformationServiceUUID:nil UUID2:nil];
         
-        if (uuidSettingViewController.isDISUUIDAvailable) {
-            if (uuidSettingViewController.disUUID2Str) {
-                [self configureDeviceInformationServiceUUID:uuidSettingViewController.disUUID1Str UUID2:uuidSettingViewController.disUUID2Str];
-            }
-            else
-                [self configureDeviceInformationServiceUUID:uuidSettingViewController.disUUID1Str UUID2:nil];
-            
-        }
-        else
-            [self configureDeviceInformationServiceUUID:nil UUID2:nil];
-        
-    }
+    
     [self startScan];
 }
 
@@ -465,13 +447,7 @@
 }
 
 - (IBAction)manualUUIDSetting:(id)sender {
-    if (uuidSettingViewController == nil) {
-        uuidSettingViewController = [[UUIDSettingViewController alloc] initWithNibName:@"UUIDSettingViewController" bundle:nil];
-    }
-//    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//    if ([[[appDelegate navigationController] viewControllers] containsObject:uuidSettingViewController] == FALSE) {
-//        [[appDelegate navigationController] pushViewController:uuidSettingViewController animated:YES];
-//    }
+   
 }
 
 //Derek

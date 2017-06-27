@@ -9,13 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "CBController.h"
 #import "DeviceInfo.h"
-#import "UUIDSettingViewController.h"
 
 @interface ConnectViewController : CBController<UITableViewDataSource, UITableViewDelegate>
 {
     IBOutlet UITableView *devicesTableView;
 
-    UUIDSettingViewController *uuidSettingViewController;
     
     NSTimer *refreshDeviceListTimer;
     
