@@ -8,15 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "CBController.h"
+#import "UUIDSettingViewController.h"
 #import "DeviceInfo.h"
 
-@interface ConnectViewController : CBController<UITableViewDataSource, UITableViewDelegate>
+@interface ConnectViewController : CBController<UITableViewDataSource, UITextViewDelegate, UITableViewDelegate>
 {
     IBOutlet UITableView *devicesTableView;
+    UIActivityIndicatorView *activityIndicatorView;
+    UILabel *statusLabel;
+    UUIDSettingViewController *uuidSettingViewController;
 
-    
     NSTimer *refreshDeviceListTimer;
-    
+
     int connectionStatus;
     //Derek
     DeviceInfo *deviceInfo;

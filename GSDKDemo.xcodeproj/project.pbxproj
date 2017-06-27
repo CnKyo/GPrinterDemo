@@ -20,7 +20,7 @@
 		A21809791B569B6C001D713E /* tscpic.rtf in Resources */ = {isa = PBXBuildFile; fileRef = A21809761B569B6C001D713E /* tscpic.rtf */; };
 		A2D785AC1B5E968E00ABD9E6 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2D785AA1B5E968E00ABD9E6 /* logo@2x.png */; };
 		A2D785AD1B5E968E00ABD9E6 /* logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2D785AB1B5E968E00ABD9E6 /* logo@3x.png */; };
-		A2DB57671AF66A960078F787 /* ConnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2DB57531AF66A960078F787 /* ConnectViewController.m */; };
+		A2DB57671AF66A960078F787 /* ConnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2DB57531AF66A960078F787 /* ConnectViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A2DB57681AF66A960078F787 /* ConnectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2DB57541AF66A960078F787 /* ConnectViewController.xib */; };
 		A2DB576D1AF66A960078F787 /* ISSCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A2DB575D1AF66A960078F787 /* ISSCButton.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A2DB57701AF66A960078F787 /* UUIDSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2DB57641AF66A960078F787 /* UUIDSettingViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -239,7 +239,6 @@
 				TargetAttributes = {
 					939AB27B1AEFAC7D0047BFAE = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = 7U7AE55838;
 					};
 					939AB2941AEFAC7D0047BFAE = {
 						CreatedOnToolsVersion = 6.1;
@@ -428,10 +427,9 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 7U7AE55838;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = GSDKDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -439,7 +437,6 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/GSDKDemo/ISSC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = mw.com.MWVIPOrderProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -449,10 +446,9 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 7U7AE55838;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = GSDKDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -460,7 +456,6 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/GSDKDemo/ISSC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = mw.com.MWVIPOrderProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

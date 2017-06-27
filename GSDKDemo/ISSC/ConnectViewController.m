@@ -32,7 +32,7 @@
         if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
             self.edgesForExtendedLayout = UIRectEdgeNone;
         }
-        
+
         UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
         backButton.title = @"Back";
         self.navigationItem.backBarButtonItem = backButton;
@@ -42,6 +42,7 @@
         [titleLabel setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Icon_old"]]];
         [titleLabel setTextAlignment:NSTextAlignmentCenter];//aaa
         self.navigationItem.titleView = titleLabel;
+        [titleLabel release];
         
         ISSCButton *button = [ISSCButton buttonWithType:UIButtonTypeCustom];
         button.frame = CGRectMake(0.0f, 0.0f, 80.0f, 30.0f);
@@ -72,12 +73,13 @@
         //refreshButton = [[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonItemStyleBordered target:self action:@selector(refreshDeviceList:)];
         //scanButton = [[UIBarButtonItem alloc] initWithTitle:@"  Scan  " style:UIBarButtonItemStyleBordered target:self action:@selector(startScan)];
         //cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(actionButtonCancelScan:)];
-        
+
         connectedDeviceInfo = [NSMutableArray new];
         connectingList = [NSMutableArray new];
-        
+
         deviceInfo = [[DeviceInfo alloc]init];
         refreshDeviceListTimer = nil;
+        uuidSettingViewController = nil;
     }
     return self;
 }
@@ -85,7 +87,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     // Do any additional setup after loading the view from its nib.
     [self setConnectionStatus:LE_STATUS_IDLE];
     [versionLabel setText:[NSString stringWithFormat:@"BLETR %@, %s",[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"], __DATE__]];
@@ -94,18 +96,37 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     
-   
-
-    [self configureDeviceInformationServiceUUID:nil UUID2:nil];
+//    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    [[appDelegate navigationController] setToolbarHidden:NO animated:NO];
+//    
+    if([connectedDeviceInfo count] == 0) {
+        if (uuidSettingViewController.isUUIDAvailable) {
+            [self configureTransparentServiceUUID:uuidSettingViewController.transServiceUUIDStr txUUID:uuidSettingViewController.transTxUUIDStr rxUUID:uuidSettingViewController.transRxUUIDStr];
+        }
+        else
+            [self configureTransparentServiceUUID:nil txUUID:nil rxUUID:nil];
         
-    
+        if (uuidSettingViewController.isDISUUIDAvailable) {
+            if (uuidSettingViewController.disUUID2Str) {
+                [self configureDeviceInformationServiceUUID:uuidSettingViewController.disUUID1Str UUID2:uuidSettingViewController.disUUID2Str];
+            }
+            else
+                [self configureDeviceInformationServiceUUID:uuidSettingViewController.disUUID1Str UUID2:nil];
+
+        }
+        else
+            [self configureDeviceInformationServiceUUID:nil UUID2:nil];
+        
+    }
     [self startScan];
 }
 
 - (void)viewDidUnload
 {
+    [devicesTableView release];
     devicesTableView = nil;
     [self setVersionLabel:nil];
+    [refreshButton release];
     refreshButton = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -121,7 +142,16 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-
+- (void)dealloc {
+    [devicesTableView release];
+    [versionLabel release];
+    [refreshButton release];
+    [cancelButton release];
+    [scanButton release];
+//    [uuidSettingViewController release];
+    [uuidSettingButton release];
+    [super dealloc];
+}
 
 - (void) displayDevicesList {
     [devicesTableView reloadData];
@@ -129,11 +159,11 @@
 
 - (void) switchToMainFeaturePage {
     NSLog(@"[ConnectViewController] switchToMainFeaturePage");
-    
-    //    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    //    if ([[[appDelegate navigationController] viewControllers] containsObject:[deviceInfo mainViewController]] == FALSE) {
-    //        [[appDelegate navigationController] pushViewController:[deviceInfo mainViewController] animated:YES];
-    //    }
+
+//    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    if ([[[appDelegate navigationController] viewControllers] containsObject:[deviceInfo mainViewController]] == FALSE) {
+//        [[appDelegate navigationController] pushViewController:[deviceInfo mainViewController] animated:YES];
+//    }
     
 }
 
@@ -149,7 +179,7 @@
         statusLabel.textColor = [UIColor blackColor];
     }
     connectionStatus = status;
-    
+
     switch (status) {
         case LE_STATUS_IDLE:
             statusLabel.text = @"Idle";
@@ -200,13 +230,13 @@
 }
 
 -(void)popToRootPage {
-    //    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    //    if (appDelegate.pageTransition == FALSE) {
-    //        [[appDelegate navigationController] popToRootViewControllerAnimated:NO];
-    //    }
-    //    else {
-    //        [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(popToRootPage) userInfo:nil repeats:NO];
-    //    }
+//    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    if (appDelegate.pageTransition == FALSE) {
+//        [[appDelegate navigationController] popToRootViewControllerAnimated:NO];
+//    }
+//    else {
+//        [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(popToRootPage) userInfo:nil repeats:NO];
+//    }
 }
 
 - (void)updateDiscoverPeripherals {
@@ -241,7 +271,7 @@
         }
         
     }
-    
+
     [self displayDevicesList];
     [self updateButtonType];
     
@@ -258,12 +288,12 @@
     
     NSLog(@"[ConnectViewController] updateMyPeripheralForNewConnected");
     DeviceInfo *tmpDeviceInfo = [[DeviceInfo alloc]init];
-    //    tmpDeviceInfo.mainViewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
-    //    tmpDeviceInfo.mainViewController.connectedPeripheral = myPeripheral;
+//    tmpDeviceInfo.mainViewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+//    tmpDeviceInfo.mainViewController.connectedPeripheral = myPeripheral;
     tmpDeviceInfo.myPeripheral = myPeripheral;
     tmpDeviceInfo.myPeripheral.connectStaus = myPeripheral.connectStaus;
     
-    /*Connected List Filter*/
+   /*Connected List Filter*/
     bool b = FALSE;
     for (int idx =0; idx< [connectedDeviceInfo count]; idx++) {
         DeviceInfo *tmpDeviceInfo = [connectedDeviceInfo objectAtIndex:idx];
@@ -310,63 +340,63 @@
             return [devicesList count];
         default:
             return 0;
+        }
     }
-}
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+
     UITableViewCell *cell;
     
     switch (indexPath.section) {
         case 0:
         {
-        //NSLog(@"[ConnectViewController] CellForRowAtIndexPath section 0, Row = %d",[indexPath row]);
-        cell = [tableView dequeueReusableCellWithIdentifier:@"connectedList"];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"connectedList"];
-        }
-        DeviceInfo *tmpDeviceInfo = [connectedDeviceInfo objectAtIndex:indexPath.row];
-        
-        cell.textLabel.text = tmpDeviceInfo.myPeripheral.advName;
-        cell.detailTextLabel.text = @"connected";
-        cell.accessoryView = nil;
-        if (cell.textLabel.text == nil)
-            cell.textLabel.text = @"Unknow";
-        
-        UIButton *accessoryButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [accessoryButton addTarget:self action:@selector(actionButtonDisconnect:)  forControlEvents:UIControlEventTouchUpInside];
-        accessoryButton.tag = indexPath.row;
-        [accessoryButton setTitle:@"Disonnect" forState:UIControlStateNormal];
-        [accessoryButton setFrame:CGRectMake(0,0,100,35)];
-        cell.accessoryView  = accessoryButton;
+            //NSLog(@"[ConnectViewController] CellForRowAtIndexPath section 0, Row = %d",[indexPath row]);
+            cell = [tableView dequeueReusableCellWithIdentifier:@"connectedList"];
+            if (cell == nil) {
+                cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"connectedList"] autorelease];
+            }
+            DeviceInfo *tmpDeviceInfo = [connectedDeviceInfo objectAtIndex:indexPath.row];
+            
+            cell.textLabel.text = tmpDeviceInfo.myPeripheral.advName;
+            cell.detailTextLabel.text = @"connected";
+            cell.accessoryView = nil;
+            if (cell.textLabel.text == nil)
+                cell.textLabel.text = @"Unknow";
+            
+            UIButton *accessoryButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            [accessoryButton addTarget:self action:@selector(actionButtonDisconnect:)  forControlEvents:UIControlEventTouchUpInside];
+            accessoryButton.tag = indexPath.row;
+            [accessoryButton setTitle:@"Disonnect" forState:UIControlStateNormal];
+            [accessoryButton setFrame:CGRectMake(0,0,100,35)];
+            cell.accessoryView  = accessoryButton;           
         }
             break;
             
         case 1:
         {
-        //NSLog(@"[ConnectViewController] CellForRowAtIndexPath section 1, Row = %d",[indexPath row]);
-        
-        cell = [tableView dequeueReusableCellWithIdentifier:@"devicesList"];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"devicesList"];
-        }
-        MyPeripheral *tmpPeripheral = [devicesList objectAtIndex:indexPath.row];
-        cell.textLabel.text = tmpPeripheral.advName;
-        cell.detailTextLabel.text = @"";
-        cell.accessoryView = nil;
-        if (tmpPeripheral.connectStaus == MYPERIPHERAL_CONNECT_STATUS_CONNECTING) {
-            cell.detailTextLabel.text = @"connecting...";
-            UIButton *accessoryButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-            [accessoryButton addTarget:self action:@selector(actionButtonCancelConnect:)  forControlEvents:UIControlEventTouchUpInside];
-            accessoryButton.tag = indexPath.row;
-            [accessoryButton setTitle:@"Cancel" forState:UIControlStateNormal];
-            [accessoryButton setFrame:CGRectMake(0,0,100,35)];
-            cell.accessoryView  = accessoryButton;
+            //NSLog(@"[ConnectViewController] CellForRowAtIndexPath section 1, Row = %d",[indexPath row]);
             
-        }
-        
-        if (cell.textLabel.text == nil)
-            cell.textLabel.text = @"Unknow";
+            cell = [tableView dequeueReusableCellWithIdentifier:@"devicesList"];
+            if (cell == nil) {
+                cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"devicesList"] autorelease];
+            }
+            MyPeripheral *tmpPeripheral = [devicesList objectAtIndex:indexPath.row];
+            cell.textLabel.text = tmpPeripheral.advName;
+            cell.detailTextLabel.text = @"";
+            cell.accessoryView = nil;
+            if (tmpPeripheral.connectStaus == MYPERIPHERAL_CONNECT_STATUS_CONNECTING) {
+                cell.detailTextLabel.text = @"connecting...";
+                UIButton *accessoryButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                [accessoryButton addTarget:self action:@selector(actionButtonCancelConnect:)  forControlEvents:UIControlEventTouchUpInside];
+                accessoryButton.tag = indexPath.row;
+                [accessoryButton setTitle:@"Cancel" forState:UIControlStateNormal];
+                [accessoryButton setFrame:CGRectMake(0,0,100,35)];
+                cell.accessoryView  = accessoryButton;
+                
+            }
+            
+            if (cell.textLabel.text == nil)
+                cell.textLabel.text = @"Unknow";
         }
             break;
     }
@@ -375,20 +405,20 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    
-    NSString *title = nil;
-    switch (section) {
+	
+	NSString *title = nil;
+	switch (section) {
         case 0:
             title = @"Connected Device:";
             break;
-        case 1:
-            title = @"Discovered Devices:";
-            break;
+		case 1:
+			title = @"Discovered Devices:";
+			break;
             
-        default:
-            break;
-    }
-    return title;
+		default:
+			break;
+	}
+	return title;
 }
 
 
@@ -400,38 +430,38 @@
     switch (indexPath.section) {
         case 0:
         {
-        //NSLog(@"[ConnectViewController] didSelectRowAtIndexPath section 0, Row = %d",[indexPath row]);
-        deviceInfo = [connectedDeviceInfo objectAtIndex:indexPath.row];
-        controlPeripheral = deviceInfo.myPeripheral;
-        [self stopScan];
-        [self setConnectionStatus:LE_STATUS_IDLE];
-        [activityIndicatorView stopAnimating];
-        if (refreshDeviceListTimer) {
-            [refreshDeviceListTimer invalidate];
-            refreshDeviceListTimer = nil;
-        }
-        //            [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(switchToMainFeaturePage) userInfo:nil repeats:NO];
+            //NSLog(@"[ConnectViewController] didSelectRowAtIndexPath section 0, Row = %d",[indexPath row]);
+            deviceInfo = [connectedDeviceInfo objectAtIndex:indexPath.row];
+            controlPeripheral = deviceInfo.myPeripheral;
+            [self stopScan];
+            [self setConnectionStatus:LE_STATUS_IDLE];
+            [activityIndicatorView stopAnimating];
+            if (refreshDeviceListTimer) {
+                [refreshDeviceListTimer invalidate];
+                refreshDeviceListTimer = nil;
+            }
+//            [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(switchToMainFeaturePage) userInfo:nil repeats:NO];
         }
             break;
         case 1:
         {
-        //Derek
-        NSLog(@"[ConnectViewController] didSelectRowAtIndexPath section 0, Row = %ld",(long)[indexPath row]);
-        NSInteger count = [devicesList count];
-        if ((count != 0) && count > indexPath.row) {
-            MyPeripheral *tmpPeripheral = [devicesList objectAtIndex:indexPath.row];
-            if (tmpPeripheral.connectStaus != MYPERIPHERAL_CONNECT_STATUS_IDLE) {
-                //NSLog(@"Device is not idle - break");
-                break;
+            //Derek
+            NSLog(@"[ConnectViewController] didSelectRowAtIndexPath section 0, Row = %d",[indexPath row]);
+            int count = [devicesList count];
+            if ((count != 0) && count > indexPath.row) {
+                MyPeripheral *tmpPeripheral = [devicesList objectAtIndex:indexPath.row];
+                if (tmpPeripheral.connectStaus != MYPERIPHERAL_CONNECT_STATUS_IDLE) {
+                    //NSLog(@"Device is not idle - break");
+                    break;
+                }
+                [self connectDevice:tmpPeripheral];
+                tmpPeripheral.connectStaus = MYPERIPHERAL_CONNECT_STATUS_CONNECTING;
+                [devicesList replaceObjectAtIndex:indexPath.row withObject:tmpPeripheral];
+                [connectingList addObject:tmpPeripheral];
+                [self displayDevicesList];
+                [self updateButtonType];
             }
-            [self connectDevice:tmpPeripheral];
-            tmpPeripheral.connectStaus = MYPERIPHERAL_CONNECT_STATUS_CONNECTING;
-            [devicesList replaceObjectAtIndex:indexPath.row withObject:tmpPeripheral];
-            [connectingList addObject:tmpPeripheral];
-            [self displayDevicesList];
-            [self updateButtonType];
-        }
-        break;
+            break;
         }
         default:
             break;
@@ -441,19 +471,25 @@
 
 - (IBAction)refreshDeviceList:(id)sender {
     NSLog(@"[ConnectViewController] refreshDeviceList");
-    [self stopScan];
-    [self startScan];
-    [devicesTableView reloadData];
+        [self stopScan];
+        [self startScan];
+        [devicesTableView reloadData];
 }
 
 - (IBAction)manualUUIDSetting:(id)sender {
-   
+    if (uuidSettingViewController == nil) {
+        uuidSettingViewController = [[UUIDSettingViewController alloc] initWithNibName:@"UUIDSettingViewController" bundle:nil];
+    }
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if ([[[appDelegate navigationController] viewControllers] containsObject:uuidSettingViewController] == FALSE) {
+        [[appDelegate navigationController] pushViewController:uuidSettingViewController animated:YES];
+    }
 }
 
 //Derek
 - (IBAction)actionButtonDisconnect:(id)sender {
     //NSLog(@"[ConnectViewController] actionButtonDisconnect idx = %d",[sender tag]);
-    NSInteger idx = [sender tag];
+    int idx = [sender tag];
     DeviceInfo *tmpDeviceInfo = [connectedDeviceInfo objectAtIndex:idx];
     [self disconnectDevice:tmpDeviceInfo.myPeripheral];
 }
@@ -461,7 +497,7 @@
 //Derek
 - (IBAction)actionButtonCancelConnect:(id)sender {
     //NSLog(@"[ConnectViewController] actionButtonCancelConnect idx = %d",[sender tag]);
-    NSInteger idx = [sender tag];
+    int idx = [sender tag];
     MyPeripheral *tmpPeripheral = [devicesList objectAtIndex:idx];
     tmpPeripheral.connectStaus = MYPERIPHERAL_CONNECT_STATUS_IDLE;
     [devicesList replaceObjectAtIndex:idx withObject:tmpPeripheral];
@@ -490,6 +526,7 @@
                 toolbarItems = [[NSArray alloc] initWithObjects:scanButton, uuidSettingButton, nil];
             }
             [self setToolbarItems:toolbarItems animated:NO];
+            [toolbarItems release];
             break;
         case LE_STATUS_SCANNING:
             if (([connectedDeviceInfo count] > 0)||([connectingList count] > 0)) {
@@ -499,6 +536,7 @@
                 toolbarItems = [[NSArray alloc] initWithObjects: refreshButton,cancelButton, uuidSettingButton, nil];
             }
             [self setToolbarItems:toolbarItems animated:NO];
+            [toolbarItems release];
             break;
     }
 }
